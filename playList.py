@@ -27,7 +27,14 @@ def video_file():
     link = inputt.get()
     inputt.set("")
     p = Playlist(link)
+    
+#    for e.g. if you want download videos from some number, from video number 14.
+#    so skip = (14-1) = 13
+#    skip = 13
     for vid in p.videos:
+#         if skip > 0 :
+#             skip = skip -1
+#             continue
         vid.streams.filter(progressive=True,file_extension='mp4').order_by('resolution').desc().first().download(r'D:\javaScript')
     mb.showinfo("YAY!!!!", "Playlist Downloaded")
 
